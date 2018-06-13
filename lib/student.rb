@@ -38,6 +38,7 @@ class Student
       DB[:conn].execute(sql, self.name, self.grade)
       @id = DB[:conn].execute("SELECT last_insert_rowid() FROM students")[0][0]
     end
+  end  
 
     def update
     end
@@ -60,6 +61,6 @@ class Student
       sql = "SELECT * FROM students WHERE name = ?"
         found = DB[:conn].execute(sql, name)[0]
         self.new(found[0], found[1], found[2])
-      end
+    end
 
 end
